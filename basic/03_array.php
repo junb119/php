@@ -101,7 +101,7 @@
   foreach($test as list($a,$b,$c)) {
     echo "A : $a <br> B : $b <br> C : $c <br>" ;
   }
-  
+
   ?>
 
   <hr>
@@ -113,6 +113,7 @@
   ?>
 
   <pre>
+    
     <hr>
     <?php
       var_dump($langs); // 원형
