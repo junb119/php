@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>파일 미리보기</title>
+    <style>
+      .preview img {
+        width: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>form</h1>
+    <form action="" enctype="multipart/form-data">
+      <!-- enctype="multipart/form-data : 파일을 서버로 전송 -->
+      <div class="field">
+        <label for="profile">프로필 : </label>
+        <input type="file" id="profile" name="profile" accept="image/*" required />
+        <div class="preview"></div>
+      </div>
+      <button>전송</button>
+    </form>
+    <script>
+      let profile = document.querySelector('#profile');
+      profile.addEventListener('change', (e) => {
+        let file = e.target.files[0];
+        var reader = new FileReader();
+        reader.onloadend = (e) => {
+          let attachment = e.target.result;
+          if (attachment) {
+            let target = document.querySelector('.preview');
+            target.innerHTML = `<img src="${attachment}" alt="${file.name}">`;
+          }
+
+          console.log(e);
+        };
+        reader.readAsDataURL(file);
+
+        // console.log(reader);
+      });
+    </script>
+  </body>
+</html>
